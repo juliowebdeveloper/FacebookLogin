@@ -93,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
                             String name = jsonObject.getString("name");
                             info.setText(info.getText() + name + jsonObject.getString("email"));
                             Log.i("Name", name);
+                            Bundle secondBundle = new Bundle();
+                            secondBundle.putString("Username", name);
+                            Intent i = new Intent(MainActivity.this, SecondActivity.class);
+                            i.putExtras(secondBundle);
+                            startActivity(i);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -103,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
                 parameters.putString("fields", "id,name,email");
                 request.setParameters(parameters);
                 request.executeAsync();
+
+
 
             }
 
